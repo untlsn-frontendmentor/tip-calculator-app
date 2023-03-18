@@ -54,14 +54,15 @@ function TipResult(props: { label: string, value: number }) {
       </div>
       <p class="text-6">$</p>
       <p class="text-8">
-        {props.value || 0}
+        {!props.value || props.value == Infinity ? 0 : props.value.toFixed(2)}
       </p>
     </div>
   );
 }
 
 export default function BillForm() {
-  const singleTip = () => values.bill / 100 * values.tip;
+  const totalSingle = () => values.bill / values.people;
+  const singleWithTip = () => totalSingle() / 100 * values.tip;
 
   return (
     <article class="bg-white rounded-3xl text-c-cyan-500 p-8 sm:grid-(~ cols-2) gap-12 w-full max-w-225 mx-auto">
@@ -86,8 +87,8 @@ export default function BillForm() {
         <Input of="people" icon="i-my-person" />
       </section>
       <section class="bg-c-cyan-500 p-6 flex-(~ col) gap-6 mt-4 rounded-lg">
-        <TipResult label="Tip Amount" value={singleTip()} />
-        <TipResult label="Total" value={singleTip() * values.people} />
+        <TipResult label="Tip Amount" value={singleWithTip()} />
+        <TipResult label="Total" value={totalSingle() + singleWithTip()} />
         <button
           type="button"
           class="bg-c-cyan-strong uppercase w-full h-10 rounded-lg text-xl hocus:bg-c-cyan-300 mt-auto"
