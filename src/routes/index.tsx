@@ -1,12 +1,12 @@
-import Navigation from '~/components/Navigation';
+import BillForm from '~/components/BillForm';
 
 export default function Home() {
   return (
-    <main class="font-sans grid place-items-center min-h-screen bg-c-carbon">
-      <article>
-        <img src="/favicon.svg" alt="logo" class="h-50" />
-      </article>
-      <Navigation />
+    <main class="font-mono min-h-screen bg-c-cyan-200 flex-(~ col) justify-center">
+      <p class="text-center">
+        <i class="i-my-logo text-20" aria-label="splitter">&nbsp;</i>
+      </p>
+      <BillForm />
     </main>
   );
 }

@@ -123,7 +123,7 @@ const config = defineConfig({
     presetWind(),
     presetWebFonts({
       fonts: {
-        sans: 'Roboto',
+        mono: 'Space Mono:700',
       },
     }),
     presetIcons({
